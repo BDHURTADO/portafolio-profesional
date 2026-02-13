@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+/* ============================= */
+/*  VARIABLES GLOBALES */
+/* ============================= */
+
+:root {
+  --background: #0f172a;      /* Azul oscuro */
+  --background-soft: #1e293b; /* Azul gris */
+  --foreground: #f1f5f9;      /* Gris claro */
+  --primary: #6366f1;         /* Indigo */
+  --secondary: #06b6d4;       /* Cyan */
+  --card: rgba(255, 255, 255, 0.05);
+  --border: rgba(255, 255, 255, 0.1);
+}
+
+/* ============================= */
+/*  MODO CLARO */
+/* ============================= */
+
+.light {
+  --background: #ffffff;
+  --background-soft: #f1f5f9;
+  --foreground: #0f172a;
+  --card: rgba(0, 0, 0, 0.05);
+  --border: rgba(0, 0, 0, 0.1);
+}
+
+/* ============================= */
+/*  GLOBAL */
+/* ============================= */
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+/* Scroll suave */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Scrollbar elegante */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 10px;
+}
+
+section {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUp 0.8s ease forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
