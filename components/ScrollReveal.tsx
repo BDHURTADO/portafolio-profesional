@@ -3,22 +3,16 @@
 import { motion } from "framer-motion";
 
 export default function ScrollReveal({
-  children,
-  delay = 0
+  children
 }: {
   children: React.ReactNode;
-  delay?: number;
 }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 80 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{
-        duration: 0.9,
-        ease: [0.22, 1, 0.36, 1],
-        delay
-      }}
-      viewport={{ once: true, amount: 0.2 }}
+      initial={{ opacity: 0, y: 80, scale: 0.95 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{ duration: 0.9, ease: "easeOut" }}
+      viewport={{ once: true, margin: "-100px" }}
     >
       {children}
     </motion.div>

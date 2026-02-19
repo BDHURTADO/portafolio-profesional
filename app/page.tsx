@@ -17,6 +17,7 @@ export default function Home() {
       <Timeline />
       <Education />
       <Contact />
+      
     </main>
   );
 }

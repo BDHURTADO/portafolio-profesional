@@ -11,9 +11,7 @@ export default function ParticlesBackground() {
   useEffect(() => {
     initParticlesEngine(async (engine) => {
       await loadSlim(engine);
-    }).then(() => {
-      setInit(true);
-    });
+    }).then(() => setInit(true));
 
     const observer = new MutationObserver(() => {
       setIsLight(document.documentElement.classList.contains("light"));
@@ -21,7 +19,7 @@ export default function ParticlesBackground() {
 
     observer.observe(document.documentElement, {
       attributes: true,
-      attributeFilter: ["class"],
+      attributeFilter: ["class"]
     });
 
     return () => observer.disconnect();
@@ -29,43 +27,29 @@ export default function ParticlesBackground() {
 
   const options = useMemo(
     () => ({
-      fullScreen: { enable: true, zIndex: -2 },
+      fullScreen: { enable: true, zIndex: -1 },
       background: { color: "transparent" },
       fpsLimit: 60,
       interactivity: {
         events: {
-          onHover: {
-            enable: true,
-            mode: "repulse"
-          }
+          onHover: { enable: true, mode: "repulse" }
         },
         modes: {
-          repulse: {
-            distance: 100
-          }
+          repulse: { distance: 120 }
         }
       },
       particles: {
         number: { value: 70 },
-        color: {
-          value: isLight ? "#6366f1" : "#06b6d4"
-        },
+        color: { value: isLight ? "#6366f1" : "#06b6d4" },
         links: {
           enable: true,
           color: isLight ? "#6366f1" : "#06b6d4",
           distance: 140,
           opacity: 0.3
         },
-        move: {
-          enable: true,
-          speed: 1.2
-        },
-        size: {
-          value: { min: 1, max: 3 }
-        },
-        opacity: {
-          value: 0.5
-        }
+        move: { enable: true, speed: 1.2 },
+        size: { value: { min: 1, max: 3 } },
+        opacity: { value: 0.5 }
       },
       detectRetina: true
     }),
@@ -74,5 +58,9 @@ export default function ParticlesBackground() {
 
   if (!init) return null;
 
-  return <Particles options={options} />;
+  return (
+    <div className="pointer-events-none fixed inset-0 -z-10">
+      <Particles options={options} />
+    </div>
+  );
 }

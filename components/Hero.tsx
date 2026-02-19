@@ -1,71 +1,64 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
-import { Typewriter } from "react-simple-typewriter";
-import AnimatedSection from "./AnimatedSection";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Hero() {
+  const [open, setOpen] = useState(false);
+
   return (
-    <section className="min-h-screen flex flex-col md:flex-row items-center justify-center gap-12 relative">
-      <AnimatedSection>
-        <div className="max-w-xl">
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-            {" "}
-            <span className="text-[var(--primary)]">
-              BRAHIAN DANILO HURTADO MUÑOZ
-            </span>
-          </h2>
+    <section
+      id="hero"
+      className="min-h-screen flex flex-col items-center justify-center text-center"
+    >
+      <motion.div
+        whileHover={{ scale: 1.05 }}
+        onClick={() => setOpen(true)}
+        className="cursor-pointer"
+      >
+        <Image
+          src="/perfil.jpg"
+          alt="perfil"
+          width={180}
+          height={180}
+          className="rounded-full border-4 border-cyan-400 shadow-xl"
+        />
+      </motion.div>
 
-          <h3 className="text-xl md:text-2xl text-[var(--secondary)] mb-6">
-            <Typewriter
-              words={[
-                "Frontend Developer",
-                "desarrollador ",
-                "UI/UX Enthusiast"
-              ]}
-              loop
-              cursor
-              cursorStyle="_"
-              typeSpeed={70}
-              deleteSpeed={50}
-              delaySpeed={1500}
-            />
-          </h3>
+      <h1 className="text-4xl md:text-5xl font-bold mt-6">
+        Brahian Danilo Hurtado Muñoz
+      </h1>
 
-          <p className="text-gray-400 mb-8">
-            soy un desarrollador web y diseñador de interfaces con experiencia en diseño y desarrollo web.
-          </p>
+      <p className="text-gray-400 mt-3 max-w-xl">
+        Desarrollador de software junior.
+      </p>
 
-          <div className="flex gap-4 flex-wrap">
-            <a
-              href="#projects"
-              className="px-6 py-3 bg-[var(--primary)] rounded-lg transition-all duration-300 hover:bg-[var(--secondary)] hover:shadow-[0_0_25px_var(--primary)]"
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            className="fixed inset-0 bg-black/90 flex items-center justify-center z-50"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setOpen(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.7 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.7 }}
             >
-              Ver proyectos
-            </a>
-
-            <a
-              href="/cv.pdf"
-              download
-              className="px-6 py-3 border border-[var(--primary)] rounded-lg transition-all duration-300 hover:bg-[var(--primary)] hover:text-white hover:shadow-[0_0_20px_var(--primary)]"
-            >
-              Descargar CV
-            </a>
-          </div>
-        </div>
-      </AnimatedSection>
-
-      {/* FOTO */}
-      <AnimatedSection>
-        <div className="relative w-60 h-60 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-[var(--primary)] shadow-[0_0_40px_var(--primary)]">
-          <Image
-            src="/profile.jpg"
-            alt="Tu foto"
-            fill
-            className="object-cover"
-          />
-        </div>
-      </AnimatedSection>
+              <Image
+                src="/perfil.jpg"
+                alt="perfil"
+                width={420}
+                height={420}
+                className="rounded-2xl border-4 border-cyan-400"
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
