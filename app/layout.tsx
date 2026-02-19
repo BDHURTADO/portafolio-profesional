@@ -7,6 +7,7 @@ import ParticlesBackground from "@/components/ParticlesBackground";
 import Spotlight from "@/components/Spotlight";
 import CursorGlow from "@/components/CursorGlow";
 import ScrollBackground from "@/components/ScrollBackground";
+import ThemeProvider from "@/components/ThemeProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -24,24 +25,29 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es" className={inter.variable}>
+    <html lang="es" className={inter.variable} suppressHydrationWarning>
       <body className="bg-black text-white antialiased relative overflow-x-hidden">
         
-        {/* Fondos y efectos globales */}
-        <ScrollBackground />
-        <ParticlesBackground />
-        <CursorGlow />
-        <Spotlight />
+        <ThemeProvider>
+          
+          {/* Fondos y efectos globales */}
+          <ScrollBackground />
+          <ParticlesBackground />
+          <CursorGlow />
+          <Spotlight />
 
-        {/* Navegación */}
-        <Navbar />
+          {/* Navegación */}
+          <Navbar />
 
-        {/* Contenido principal */}
-        <main className="relative z-10">
-          {children}
-        </main>
+          {/* Contenido principal */}
+          <main className="relative z-10">
+            {children}
+          </main>
+
+        </ThemeProvider>
 
       </body>
     </html>
   );
 }
+
