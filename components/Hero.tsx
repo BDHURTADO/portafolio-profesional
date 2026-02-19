@@ -7,6 +7,17 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function Hero() {
   const [open, setOpen] = useState(false);
 
+  const scrollToProjects = () => {
+    const el = document.getElementById("projects");
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const whatsappMessage = encodeURIComponent(
+    "Hola Brahian hurtado, vimos tu portafolio y tu hoja de vida y nos gustaría contratar tus servicios."
+  );
+
+  const whatsappLink = `https://wa.me/573235901888?text=${whatsappMessage}`;
+
   return (
     <section
       id="hero"
@@ -33,6 +44,27 @@ export default function Hero() {
       <p className="text-gray-400 mt-3 max-w-xl">
         Desarrollador de software junior.
       </p>
+
+      {/* BOTONES */}
+      <div className="flex flex-wrap gap-6 mt-8 justify-center">
+       
+
+        <a
+          href="/cv.pdf"
+          download
+          className="px-8 py-3 rounded-lg border border-cyan-500 text-cyan-400 hover:bg-cyan-500 hover:text-black transition"
+        >
+          Descargar CV
+        </a>
+
+        <a
+          href={whatsappLink}
+          target="_blank"
+          className="px-8 py-3 rounded-lg bg-green-500 hover:bg-green-600 text-white font-semibold transition shadow-lg"
+        >
+          Contrátame
+        </a>
+      </div>
 
       <AnimatePresence>
         {open && (

@@ -4,7 +4,7 @@ import { FaWhatsapp, FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import ScrollReveal from "./ScrollReveal";
 
 export default function Contact() {
-  const phone = "573235902888";
+  const phone = "573235901888";
   const email = "brahianhurtado800@gmail.com";
   const github = "https://github.com/BDHURTADO";
   const linkedin = "https://www.linkedin.com/in/bdhurtado13";
