@@ -19,8 +19,18 @@ const projects: Project[] = [
     description:
       "Aplicación web que consulta el clima mundial usando OpenWeather API.",
     tech: "Next.js, Tailwind, Axios",
-    url: "https://tu-proyecto.com"
-  }
+    url: "https://weather-app-project-two-mocha.vercel.app/"
+  },
+  {
+  title: "CondoSys - Gestión Residencial",
+  image: "/ondosys-preview.png", 
+  description:
+    "Sistema integral de administración de condominios con panel de control para residentes y administradores. Incluye un motor de auditoría automatizado para rastrear cambios en la base de datos en tiempo real.",
+  tech: "Python (FastAPI/Flask), React (Vite), PostgreSQL, Vercel",
+  url: "https://consosys.vercel.app" 
+ }
+  
+
 ];
 
 export default function Projects() {
